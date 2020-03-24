@@ -8,7 +8,7 @@
     <title>Document</title>
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'ajax_app/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                     <tbody>
                         {% for snake in all_snakes %}
                         <tr>
-                            <td><a class="seeSnake" href="/getsnake/{{snake.id}}">{{snake.name}}</a></td>
+                            <td><a class="seeSnake" href="/snakes/{{snake.id}}">{{snake.name}}</a></td>
                             <td>{{snake.length}} feet</td>
                             <td>
                                 {% if snake.venomous == True %}
@@ -41,7 +41,7 @@
                                 {% endif %}
                             </td>
                             <td><a id="snakeNumber{{snake.id}}" class="deleteSnake"
-                                    href="/deletesnake/{{snake.id}}">Delete</a></td>
+                                    href="/snakes/{{snake.id}}/delete">Delete</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

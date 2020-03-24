@@ -10,11 +10,11 @@ def index(req):
     context = {
         'all_snakes': Snake.objects.all()
     }
-    return render(req, 'ajax_app/index.html', context)
+    return render(req, 'index.html', context)
 
 
 def snakeForm(req):
-    return render(req, 'ajax_app/snakeform.html')
+    return render(req, 'snakeform.html')
 
 
 def addSnake(req):
@@ -30,23 +30,23 @@ def addSnake(req):
         return JsonResponse(error)
     newSnake = Snake.objects.create(
         name=req.POST['name'], length=req.POST['length'], venomous=ven)
-    return redirect(f"/getsnake/{newSnake.id}")
+    return redirect(f"/snakes/{newSnake.id}")
 
 
-def newlyadded(req, id):
+def oneSnake(req, snake_id):
     context = {
-        'snake': Snake.objects.get(id=id)
+        'snake': Snake.objects.get(id=snake_id)
     }
-    return render(req, 'ajax_app/newsnake.html', context)
+    return render(req, 'newsnake.html', context)
 
 
-def allsnakes(req):
+def allSnakes(req):
     context = {
         'all_snakes': Snake.objects.all()
     }
-    return render(req, "ajax_app/allsnakes.html", context)
+    return render(req, "allsnakes.html", context)
 
 
-def deleteSnake(req, id):
-    Snake.objects.get(id=id).delete()
-    return redirect("/allsnakes")
+def deleteSnake(req, snake_id):
+    Snake.objects.get(id=snake_id).delete()
+    return redirect("/snakes/all")

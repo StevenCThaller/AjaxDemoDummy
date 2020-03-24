@@ -8,7 +8,7 @@
     <title>Document</title>
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'ajax_app/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <form action="/addsnake" id="snakeForm" class="form-horizontal" method="POST">
+                <form action="/snakes/add" id="snakeForm" class="form-horizontal" method="POST">
                     {% csrf_token %}
                     <div class=" form-group">
                         {% if messages %}
